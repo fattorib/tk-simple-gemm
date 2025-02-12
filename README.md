@@ -1,10 +1,16 @@
 # ThunderKittens - Simple GEMM
 
-This repo contains a performant tensorcore GEMM kernel written in ThunderKittens (*and another slower kernel lol*). For square matrices, the 4-warp, 128x128x32 kernel is within ~98% of cuBLAS and Triton. Thunderkittens is quite nice to use, and while it includes a few example GEMM kernels, these 1) use H100 specific features (WGMMA) and 2) use the author's load-compute-store-finish (LCSF) programming model. This repo intends to provide an example of an even simpler GEMM kernel that is still fast.  
+This repo contains a performant tensorcore GEMM kernel written in ThunderKittens (*and another slower kernel lol*). For square matrices, the 4-warp, 128x128x32 kernel is within ~98% of cuBLAS and Triton. Thunderkittens is quite nice to use, and while it includes a few example GEMM kernels, these 1) use H100 specific features (WGMMA) and 2) use the author's load-compute-store-finish (LCSF) programming model. This repo intends to provide an example of a simple GEMM kernel that is still fast.  
 
 ## Benchmarks
 
-For a 4096x4096x4096 problem with bfloat16 inputs and float accumulation, the 128x128x32 kernel achieves 61.1 TFLOPs on an RTX 4070, cuBLAS achieves 61.4 TFLOPs and Triton achieves 62.2 TFLOPs. 
+Benchmarks performed on an 4096x4096x4096 problem with bfloat16 inputs and float accumulation on an RTX 4070. Triton kernel is taken from [here](https://triton-lang.org/main/getting-started/tutorials/03-matrix-multiplication.html#sphx-glr-getting-started-tutorials-03-matrix-multiplication-py):
+
+| Kernel                     | TFLOPs |
+|----------------------------|--------|
+| ThunderKittens (this repo) |   61.1 |
+| cuBLAS                     |   61.4 |
+| Triton                     |   62.2 |
 
 # Compile
 
