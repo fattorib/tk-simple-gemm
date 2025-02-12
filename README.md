@@ -9,7 +9,12 @@ For a 4096x4096x4096 problem with bfloat16 inputs and float accumulation, the 12
 # Compile
 
 ## Setup 
-Clone repo with `git clone --recurse-submodules ...`. This code has been tested in the following environment:
+Clone repo with:
+```bash
+git clone --recurse-submodules https://github.com/fattorib/tk-simple-gemm.git
+```
+
+This code has been tested in the following environment:
 - gcc 11.4.0
 - nvcc 12.6
 - RTX 4070 
